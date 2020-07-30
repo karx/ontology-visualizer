@@ -78,12 +78,35 @@ function addToDOM(node) {
 		typeof node["rdfs:label"] === "string"
 			? node["rdfs:label"]
 			: node["rdfs:label"]["@value"];
+
+	let subClass = node["rdfs:subClassOf"];
+	let herr = [];
+	if (!subClass) {
+		console.log(subClass);
+	} else if (Array.isArray(subClass)) {
+		subClass.forEach((n) => {
+			let nameOfParentId = n["@id"];
+			let nNode = indexedNodes[nameOfParentId];
+			herr.push(nNode);
+		})
+	} else {
+		let nameOfParentId = subClass["@id"];
+		let nNode = indexedNodes[nameOfParentId];
+		herr.push(nNode);
+	}
+
 	let nodeDOM = document.createElement("div");
 	nodeDOM.classList = `node ${
 		node["@type"] === "rdf:Property" ? "each-prop" : "each-node"
 	}`;
 	nodeDOM.innerHTML = `<h4>${labelValue}</h4>`;
-
+	herr.forEach( (herSub) => {
+		nodeDOM.innerHTML += `
+			<div class="hierarchy">
+				${getLabelOfNode(herSub)} > ${labelValue}
+			</div>
+			`
+	});
 	document.getElementById("top-label").appendChild(nodeDOM);
 }
 
@@ -92,4 +115,13 @@ function resetLabelDOM(nodeList) {
 	nodeList.forEach((eachKey) => {
 		addToDOM(indexedNodes[eachKey]);
 	});
+}
+
+
+function getLabelOfNode(node) {
+	let labelValue =
+		typeof node["rdfs:label"] === "string"
+			? node["rdfs:label"]
+			: node["rdfs:label"]["@value"];
+	return labelValue;
 }
