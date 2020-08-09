@@ -88,7 +88,7 @@ function addToDOM(node) {
 			let nameOfParentId = n["@id"];
 			let nNode = indexedNodes[nameOfParentId];
 			herr.push(nNode);
-		})
+		});
 	} else {
 		let nameOfParentId = subClass["@id"];
 		let nNode = indexedNodes[nameOfParentId];
@@ -100,12 +100,12 @@ function addToDOM(node) {
 		node["@type"] === "rdf:Property" ? "each-prop" : "each-node"
 	}`;
 	nodeDOM.innerHTML = `<h4>${labelValue}</h4>`;
-	herr.forEach( (herSub) => {
+	herr.forEach((herSub) => {
 		nodeDOM.innerHTML += `
 			<div class="hierarchy">
 				${getLabelOfNode(herSub)} > ${labelValue}
 			</div>
-			`
+			`;
 	});
 	document.getElementById("top-label").appendChild(nodeDOM);
 }
@@ -116,7 +116,6 @@ function resetLabelDOM(nodeList) {
 		addToDOM(indexedNodes[eachKey]);
 	});
 }
-
 
 function getLabelOfNode(node) {
 	let labelValue =
