@@ -1,21 +1,20 @@
 .top-label {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: space-around;
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	justify-content: space-around;
 }
 .node {
-    padding: 20px;
-    border-radius: 10px;
-    margin: 5px 5px;
+	padding: 20px;
+	border-radius: 10px;
+	margin: 5px 5px;
 }
 .each-node {
-    background-color: bisque;
-    
+	background-color: bisque;
 }
 .each-prop {
-    background-color: indianred;
+	background-color: indianred;
 }
 .hierarchy {
-    text-align: center;
+	text-align: center;
 }
