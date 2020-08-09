@@ -1,6 +1,8 @@
 ## Schema.org ontology visualizer
 To help navigate, visualize ontologies using Web technologies
 
+Work can be tracked [karx.github.io#146](https://github.com/karx/karx.github.io/issues/146)
+
 
 ## Discussion, Support and Issues
 For general support and discussion of this project, please join the Discord server: [Discord Invite Link](https://discord.gg/B2cERQ5)
