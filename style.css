@@ -1,3 +1,45 @@
+body {
+    margin: 0;
+    height: 100vh;
+}
+.container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    align-items: center;
+}
+
+.search-bar {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin: 20px;
+}
+.search-bar #search-bar {
+    width: 300px;
+    line-height: 24px;
+}
+
+.viz-container {
+    flex-grow: 10;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.fetching {
+    height: 30vh;
+    font-size: 2em;
+    transition: all 0.5s ease;
+}
+.fetching.haveData {
+    height: 0px;
+    overflow: hidden;
+    
+}
+
 .top-label {
 	display: flex;
 	flex-direction: row;
@@ -6,7 +48,7 @@
 }
 .node {
 	padding: 20px;
-	border-radius: 10px;
+	/* border-radius: 10px; */
 	margin: 5px 5px;
 }
 .each-node {

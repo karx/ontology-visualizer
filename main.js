@@ -3,6 +3,8 @@ let indexedNodes;
 async function getSchemaData() {
 	let response = await fetch("./schemaorg-current-http.jsonld");
 	let schemaData = await response.json();
+	updateDOMGotResponse();
+	
 	console.log(schemaData);
 	return schemaData;
 }
@@ -50,10 +52,20 @@ async function theGo() {
 		}
 	});
 	console.log(indexedNodes);
+
+
+	triggerSearch('movie');
+
 }
 
 document.getElementById("search-bar").addEventListener("input", (e) => {
 	let searchText = e.target.value.toLowerCase();
+	triggerSearch(searchText);
+	
+});
+theGo();
+
+function triggerSearch(searchText) {
 	let matchedNodes = Object.keys(indexedNodes).filter((key) => {
 		let n = indexedNodes[key];
 		if (!n["rdfs:label"]) {
@@ -69,8 +81,7 @@ document.getElementById("search-bar").addEventListener("input", (e) => {
 	});
 	console.log(matchedNodes.length);
 	resetLabelDOM(matchedNodes);
-});
-theGo();
+}
 
 function addToDOM(node) {
 	// console.log(node);
@@ -123,4 +134,9 @@ function getLabelOfNode(node) {
 			? node["rdfs:label"]
 			: node["rdfs:label"]["@value"];
 	return labelValue;
+}
+
+
+function updateDOMGotResponse() {
+	document.getElementById('fetchingData').classList.add('haveData');
 }

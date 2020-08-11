@@ -10,11 +10,16 @@
 	<body>
 		<div class="container">
 			<div class="search-bar">
-				<input type="text" name="search-bar" id="search-bar" />
+				<input type="text" name="search-bar" id="search-bar" placeholder="Search Entity/Property (Example: Movie)" />
 			</div>
 			<div class="viz-container">
+                <div class="fetching" id="fetchingData">
+                    <div class="waiting-icon">
+                        ⌛
+                    </div>
+                </div>
 				<div class="top-label" id="top-label">
-					<div class="node each-node">
+					<!-- <div class="node each-node">
 						<h4>VideoGameSeries</h4>
 						<div class="hierarchy">
 							A > B
@@ -22,7 +27,7 @@
 					</div>
 					<div class="node each-node">
 						<h4>VideoGameSeries</h4>
-					</div>
+					</div> -->
 				</div>
 				<div class="detailed-label"></div>
 			</div>
